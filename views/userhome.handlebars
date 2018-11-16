@@ -1,0 +1,88 @@
+
+<!--<div class="alert alert-info">{{messages}}</div>-->
+<script src="/js/jquery-3.3.1.js"></script>
+{{# if user }}
+<br><br>
+<strong><h3 style="font-family:Georgia;">Welcome {{user.firstName}} {{user.lastName}}</h3></strong>
+
+{{ else }}
+<br><br>
+<strong><h3 style="font-family:Georgia;">Hello, Guest</h3></strong>
+{{/ if}}
+<br><br>
+<script type="text/javascript">
+	  $(document).ready(function(){
+    $('.carousel.carousel-slider').carousel({
+    fullWidth: true,
+	indicators:true
+  }).height(400)
+  autoplay();
+  function autoplay(){
+      $('.carousel').carousel('next');
+      setTimeout(autoplay,3000);
+  }      
+  });
+  </script>
+<div class="container" style="width:850px;">
+    
+<div class="carousel carousel-slider center">
+    <div class="slider">
+    <div class="carousel-item" href="#one!">
+    <div class="carousel-fixed-item center">
+      <!--<a href="#one!" class="btn waves-effect white grey-text darken-text-2">button</a>-->
+    </div>  
+	  <img src="/images/carousel-images/carousel-image (1).jpg">
+      
+    </div>
+    <div class="carousel-item" href="#two!">
+      <div class="carousel-fixed-item center">
+      <!--<a href="#two!" class="btn waves-effect white grey-text darken-text-2">button</a>-->
+    </div>
+	  <img src="/images/carousel-images/carousel-image (2).jpg">
+      
+    </div>
+    <div class="carousel-item" href="#three!">
+      <div class="carousel-fixed-item center">
+      <!--<a href="#three!" class="btn waves-effect white grey-text darken-text-2">button</a>-->
+    </div>
+	  <img src="/images/carousel-images/carousel-image (3).jpg">
+      
+    </div>
+    <div class="carousel-item" href="#four!">
+      <div class="carousel-fixed-item center">
+      <!--<a href="#four!" class="btn waves-effect white grey-text darken-text-2">button</a>-->
+    </div>
+	  <img src="/images/carousel-images/carousel-image (4).jpg">
+      
+    </div>
+	    <div class="carousel-item" href="#four!">
+      <div class="carousel-fixed-item center">
+      <!--<a href="#five!" class="btn waves-effect white grey-text darken-text-2">button</a>-->
+    </div>
+	  <img src="/images/carousel-images/carousel-image (5).jpg">
+      
+    </div>
+	    <div class="carousel-item" href="#four!">
+      <div class="carousel-fixed-item center">
+      <!--<a href="#six!" class="btn waves-effect white grey-text darken-text-2">button</a>-->
+    </div>
+	  <img src="/images/carousel-images/carousel-image (6).jpg">
+      
+    </div>
+	    <div class="carousel-item" href="#four!">
+      <div class="carousel-fixed-item center">
+      <!--<a href="#seven!" class="btn waves-effect white grey-text darken-text-2">button</a>-->
+    </div>
+	  <img src="/images/carousel-images/carousel-image (7).png">
+      
+    </div>
+	    <div class="carousel-item" href="#four!">
+      <div class="carousel-fixed-item center">
+      <!--<a href="#eight!" class="btn waves-effect white grey-text darken-text-2">button</a>-->
+    </div>
+	  <img src="/images/carousel-images/carousel-image (8).png">
+      
+    </div>
+    </div>
+  </div>
+</div>

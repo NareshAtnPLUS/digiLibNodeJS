@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LoginApp</title>
+    <link rel="shortcut icon" href="/icons/diGiLib.ico">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">LoginApp</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          {{#if user}}
+            <li class="nav-item active">
+            <a class="nav-link" href="/">Dashboard <span class="sr-only">(current)</span></a>
+          </li>
+          {{else}}
+          <li class="nav-item">
+            <a class="nav-link active" href="/users/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/users/register">Register</a>
+          </li>
+          {{/if}} 
+        </ul>
+        {{#if user}}
+        <a class="nav-link" href="/users/logout">Logout</a>
+        {{/if}}
+      </div>
+    </nav>
+
+    <main role="main">
+
+      <div class="container">
+        <!-- Example row of columns -->
+        
+
+        <hr>
+        {{#if success_msg}}
+            <div class="alert alert-sucess">{{success_msg}}</div>
+            {{/if}}
+            {{#if error_msg}}
+            <div class="alert alert-danger">{{success_msg}}</div>
+            {{/if}}
+            {{#if error}}
+            <div class="alert alert-danger">{{success_msg}}</div>
+            {{/if}}
+            {{{body}}}
+
+      </div> <!-- /container -->
+
+    </main>
+
+    <footer class="container">
+      <div class="row">
+          <div class="col-lg-12">
+            
+          </div>
+          
+        </div>
+      <p>&copy; LoignApp</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,200 @@
+<div class="container">
+  <br><br>
+  <strong><h3 style="font-family:Georgia;">{{user.firstName}}'s Profile</h3></strong>
+  
+<div class="card horizontal z-depth-5">
+  <div class="card-image waves-effect waves-block waves-dark">
+          <img class="activator" src="{{imageFile}}">
+          
+          </div>
+
+  <div class="card-reveal">
+    <span class="card-title grey-text text-darken-4">Update Profile Picture<i class="material-icons right">close</i></span>
+<!--<form action="/users/profile/:{{user._id}}" method="POST" enctype="multipart/form-data">-->
+  <form action="/users/updateProfilePic/{{ userId }}" method="POST" enctype="multipart/form-data">
+                  <div class="file-field input-field">
+                    <div class="btn red waves-effect waves-light z-depth-4">
+                      <span>Select Profile Picture</span>
+                      <input name="profilePic" type="file">
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate" type="text">
+                    </div>
+                  </div>
+                  <center><button type="submit" class="btn purple waves-effect waves-light z-depth-4">Update Profile Picture<i class="material-icons left">android</i></button></center>
+                </form>
+    </div>
+      <div class="card-content">
+       
+
+            
+
+
+          
+
+          <div class="row">
+            <div class="input-field col-auto">
+              <i class="material-icons prefix">sd_storage</i>
+              <input id="mobileNumber" maxlength="13" data-length="13"  type="text" class="validate" value="{{mobileNumber}}">
+              <label for="mobileNumber">Mobile</label>
+            </div>
+          </div>
+          <div class="container">
+            <div class="input-field col s12">
+              <!--<i class="material-icons prefix">assessment</i>-->
+              
+            </div>
+          </div>
+          
+            <div class="row">
+              <div class="input-field col-auto">
+                <i class="material-icons prefix">email</i>
+                <input id="email"  type="email" class="validate" value="{{email}}">
+                <label for="email">Email</label>
+              </div>
+            </div>
+
+            
+
+            <br><br>
+              
+              <button type="submit" class="btn-large blue waves-effect waves-light z-depth-4 activator">Update Profile Picture</button>
+            
+            
+            
+           
+         </form>
+       </div>
+       </div>
+       </div>
+       </div>
+<br><br>
+
+
+
+{{# if borrowBooks }}
+      <center><strong><h3 style="font-family:Georgia;">Books You've Borrowed ..</h3></strong></center>
+      <form method="POST" action="/users/cart/{{user._id}}">
+      <center>
+        <button class="z-depth-3 waves-effect waves-dark red accent-3 btn" type="submit" autocomplete="off" name="submit" value="Return All">Return All<i class="material-icons left">reply_all</i><input class="hide" type="submit" autocomplete="off" name="submit" value="Return All"></button>
+          &nbsp;
+        <button class="z-depth-3 waves-effect waves-dark btn light-green accent-4" type="submit" autocomplete="off" name="submit" value="Renew All">Renew All<i class="material-icons left">swap_calls</i><input class="hide" type="submit" autocomplete="off" name="submit" value="Renew All"></button>
+      </center>
+    </form>
+    {{# each borrowBooks}}
+<div class="container">
+  
+<div class="row">
+
+
+           
+            <div class="card  horizontal medium sticky-action z-depth-5" style="overflow: visible;">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="{{ this.imageFile }}">
+              </div>
+              <div class="card-content large">
+                <span class="card-title activator grey-text text-darken-4">{{ this.bookName }}<i class="material-icons right">more_vert</i></span>
+                <h6>by {{this.authorName}}</h6>
+              </div>
+              
+              <div class="card-action">
+                <form method="POST" action="/users/returnRenew/{{this.isbnNumber}}">
+                  <center>
+                    <button class="z-depth-3 waves-effect waves-dark red accent-3 btn" type="submit" autocomplete="off" name="submit" value="Return">Return<i class="material-icons left">reply</i><input class="hide" type="submit" autocomplete="off" name="submit" value="Return"></button>
+                  &nbsp;
+                  <button class="z-depth-3 waves-effect waves-dark btn light-green accent-4" type="submit" autocomplete="off" name="submit" value="Renew">Renew<i class="material-icons left">autorenew</i><input class="hide" type="submit" autocomplete="off" name="submit" value="Renew"></button>
+                  </center>
+                </form>
+              </div>
+
+              <div class="card-reveal" style="display: none; transform: translateY(0%);">
+                <span class="card-title grey-text text-darken-4"> <b>{{ this.bookName }}</b><i class="material-icons right">close</i></span>
+                <h6>by {{this.authorName}}</h6>
+                
+                <!--<p>{{this._id}}</p>-->
+                <h6><b>Department: </b> {{ this.bookDept}}</h6>
+                <br>
+                <h6><b>ISBN Number: </b> {{ this.isbnNumber}}</h6>
+                <br>
+                <h6><b>Borrow Time: </b> {{ this.borrowTime}}</h6>
+                <br>
+                <h6><b>Renew Time: </b> {{ this.renewTime}}</h6>
+                <br>
+                <h6><b>Fine Ammount: </b> {{ this.fine}}</h6>
+                
+                <br><br><br><br><br><br>
+              </div>
+            </div>
+          </div>
+
+          
+</div>
+
+{{/ each}}
+
+{{/ if }}
+
+
+
+
+
+
+<div class="container">
+    <strong><h3 style="font-family:Georgia;">Describe Yourself...</h3></strong>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+    <div class="col-auto">
+      <div class="card z-depth-5">
+        <div class="card-content">
+          <span class="card-title" style="font-family:Trebuchet MS;">Tell Us What You Are.</span>
+          <form action="/users/optionals/{{user._id}}" method="POST" class="col s12">
+          <div class="row">
+            
+            <div class="row">
+                <div class="input-field col s12">
+                <i class="material-icons prefix">touch_app</i>
+                <textarea id="textarea1" name="occupation" value="{{user.occupation}}" class="materialize-textarea"></textarea>
+                <label for="textarea1">What's Your Job</label>
+                </div>
+            </div>
+            <div class="row">
+              <span class="card-title" style="font-family:Trebuchet MS;">Tell Us What You Do.</span>
+                <div class="input-field col s12">
+                <i class="material-icons prefix">touch_app</i>
+                <textarea id="textarea1" name="functionality" value="{{user.functionality}}"  class="materialize-textarea"></textarea>
+                <label for="textarea1">What do you love at Work</label>
+                </div>
+            </div>
+            <div class="input-field col s12">
+              <span class="card-title" style="font-family:Trebuchet MS;">What's Your Genre</span>
+          <p><label><input type="checkbox" name="genre" value="Technology"><span>Technology</span></label></p>
+          <p><label><input type="checkbox" name="genre" value="Spiritual"><span>Sppiritual</span></label></p>
+          <p><label><input type="checkbox" name="genre" value="Electronics"><span>Electronics</span><br></label></p>
+          <p><label><input type="checkbox" name="genre" value="Mechanical"><span>Mechanical</span><br></label></p>
+          <p><label><input type="checkbox" name="genre" value="History"><span>History</span><br></label></p>
+          <p><label><input type="checkbox" name="genre" value="Geography"><span>Geography</span></label></p>
+        </div>
+            
+            
+        </div>
+        <div class="container">
+          <center><button type="submit" class="btn purple waves-effect waves-light z-depth-4">Post Intrests<i class="material-icons left">grade</i></button></center>
+        </div>
+      </form>
+        
+       
+            
+            
+            
+            
+        </div>
+        <div class="row">
+
+  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

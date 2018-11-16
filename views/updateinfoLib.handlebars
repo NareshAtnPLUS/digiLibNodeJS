@@ -1,0 +1,74 @@
+<div class="container">
+    <h4>Update Form of {{user.firstName}} {{ user.lastName}}</h4>
+</div>
+<div class="container">
+    <div class="card z-depth-5">
+        <div class="row">
+            <div class="card-content">
+                <span class="card-title" style="font-family:Trebuchet MS;">Update Info {{user.firstName}} {{ user.lastName}}</span>
+                <form action="/librarian/updateInfo/edit/{{user.id}}" method="POST">
+                <input type="hidden" name="_method" value="PUT">
+                    <div class="container">
+                        <div class="row">
+                            <div class="input-field col s3">
+                                <i class="material-icons prefix">home</i>
+                                <input id="doorNo" value="{{user.doorNo}}" name="doorNo" type="text" class="validate">
+                                <label for="doorNo">Door No.</label>
+                            </div>
+                            <div class="input-field col s9">
+                                <i class="material-icons prefix">streetview</i>
+                                <input id="streetNo" name="streetName" value="{{user.streetName}}" type="text" class="validate">
+                                <label for="streetNo">Street Name</label>
+                            </div>
+                            </div>
+
+                            <div class="row">
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">map</i>
+                                <input id="areaLocal" name="areaName" type="text" value="{{user.areaName}}" class="validate">
+                                <label for="areaLocal">Area/Locality</label>
+                            </div>
+                            
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">directions</i>
+                                <input id="zipCode" name="zipCode" maxlength="6" data-length="6" value="{{user.zipCode}}" type="text" class="validate">
+                                <label for="zipCode">Zip Code</label>
+                            </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                <i class="material-icons prefix">email</i>
+                                <input id="email" name="email" type="email" value="{{user.email}}" class="validate">
+                                <label for="email">Email</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s6">
+                                <i class="material-icons prefix">contact_mail</i>
+                                <input id="mobileNumber" maxlength="13" data-length="13" value="{{user.mobileNumber}}" name="mobileNumber" type="text" class="validate">
+                                <label for="mobileNumber">Mobile</label>
+                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                <i class="material-icons prefix">touch_app</i>
+                                <textarea id="textarea1" name="userDescription" class="materialize-textarea" value="{{user.userDescription}}"></textarea>
+                                <label for="textarea1">Textarea</label>
+                                </div>
+                            </div>
+
+                        <div class="container"><br><br>
+              
+                            <button type="submit" class="btn blue waves-effect waves-light z-depth-4">Update
+                                
+                                </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

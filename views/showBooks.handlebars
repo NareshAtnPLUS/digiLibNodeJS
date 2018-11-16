@@ -1,0 +1,56 @@
+
+<h3 style="text-align:center;">Books Available ...</h3>
+
+
+  
+{{# each books}}
+<div class="container">
+  
+<div class="row">
+
+
+           
+            <div class="card  horizontal medium sticky-action z-depth-5" style="overflow: visible;">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="{{ this.imageToHBS.[0] }}">
+              </div>
+              <div class="card-content large">
+                <span class="card-title activator grey-text text-darken-4">{{ this.bookName }}<i class="material-icons right">more_vert</i></span>
+                <b><span>Author :  {{ this.authorName }} &nbsp;|| &nbsp;Available Copies : {{this.availableCopies}} </span>
+                <br>  <br><span class="orange-text text-accent-4" ><i class="material-icons prefix">timeline</i> &nbsp; Floor No: {{this.bookDetail.location.floorNo}}  &nbsp; <i class="material-icons prefix">view_array</i> &nbsp; Rack No: {{this.bookDetail.location.rackNo}}  &nbsp; <i class="material-icons prefix">vertical_split</i> &nbsp;  Shelf No: {{this.bookDetail.location.shelfNo}}</span></b>                
+                
+              </div>
+              
+              <div class="card-action">
+                <form method="POST" action="/users/showBooks/{{this._id}}">
+                  <center>
+                    <button class="z-depth-3 waves-effect waves-dark red accent-3 btn" type="submit" autocomplete="off" name="submit" value="Borrow">Borrow<i class="material-icons left">play_for_work</i><input class="hide" type="submit" autocomplete="off" name="submit" value="Borrow"></button>
+                  &nbsp;
+                  <button class="z-depth-3 waves-effect waves-dark btn light-green accent-4" type="submit" autocomplete="off" name="submit" value="Cart"><input class="hide" type="submit" autocomplete="off" name="submit" value="Cart">Add to Cart<i class="material-icons Rounded left">shopping_cart</i></button>
+                  </center>
+                </form>
+              </div>
+
+              <div class="card-reveal" style="display: none; transform: translateY(0%);">
+                <span class="card-title grey-text text-darken-4"> <b>{{ this.bookName }}</b><i class="material-icons right">close</i></span>
+                <h6>by {{this.authorName}}</h6>
+                
+                <!--<p>{{this._id}}</p>-->
+                <h6><b>Department: </b> {{ this.bookDept}}</h6>
+                <br>
+                <p style="text-align:left;">{{ this.bookDes }}</p>
+                <p><b>Pages: </b>{{this.bookDetail.pages}}</p>
+                <p><b>Cost:&nbsp; </b>₹.{{this.bookCost}}</p>
+                <p><b>Year Published: </b>{{this.yearPublished}}</p>
+                <p><b>Publisher: </b>{{this.bookPublisher}}</p>
+                <h6>The Book is located in</h6>
+                <b><span class="orange-text text-accent-4"><i class="material-icons prefix">timeline</i> &nbsp; Floor No: {{this.bookDetail.location.floorNo}}  &nbsp; <i class="material-icons prefix">view_array</i> &nbsp; Rack No: {{this.bookDetail.location.rackNo}}  &nbsp; <i class="material-icons prefix">vertical_split</i> &nbsp;  Shelf No: {{this.bookDetail.location.shelfNo}}</span></b>
+                <br><br><br><br><br><br>
+              </div>
+            </div>
+          </div>
+
+          
+</div>
+
+{{/ each}}

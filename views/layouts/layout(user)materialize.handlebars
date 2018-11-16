@@ -1,0 +1,208 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="/icons/diGiLib.ico">
+  <!--Import Google Icon Font-->
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.js"></script>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="/css/materialize.css">
+  {{# if title }}
+  <title>diGi-Lib {{ title }}</title>
+  {{ else }}
+  <title>Glosys diGi-Lib</title>
+  {{/ if }}
+  <style>
+    body {
+     display: flex;
+     min-height: 100vh;
+     flex-direction: column;
+ }
+ main {
+     flex: 1 0 auto;
+ }
+  </style>
+
+
+
+</head>
+<body style="background:#eaeaea;">
+
+  <header>
+    
+    <ul id="dropdown2" class="dropdown-content">
+      <li><a href="/{{user.accountType}}/profile/{{ user._id }}">Profile</a></li>
+      <li><a href="/{{user.accountType}}/updateInfo/edit/{{ user._id }}" class="waves-effect waves-dark">Update Account</a></li>
+      <li class="divider"></li>
+      <li><a href="/{{user.accountType}}/logout">Logout</a></li>
+    </ul>
+    
+    
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a href="/users/role=>user/account">Login</a></li>
+      
+      <li class="divider"></li>
+      <li><a href="/users/role=>user/account#register">Register</a></li>
+    </ul>
+    
+
+    <div class="navbar-fixed z-depth-2">
+      <nav class="nav-wrapper blue accent-4">
+        <div class="">
+          <div class="container">
+          <a href="/users/home" style="font-family:Trebuchet MS;" class="brand-logo waves-effect waves-dark">Glosys diGi-Lib</a>
+          <a href="#" class="sidenav-trigger" data-target="mobile-links">
+            <i class="material-icons waves-effect waves-dark">menu</i>
+          </a>
+          </div>
+          <ul class="right hide-on-med-and-down">
+            {{# if user }}
+            <li><a href="/users/home/{{user._id}}" class="waves-effect waves-light">Home</a></li>
+            {{ else }}
+            <li><a href="/users/home" class="waves-effect waves-dark">Home</a></li>
+            {{/ if}}
+            {{# if user }}
+            <li><a href="/users/showBooks/{{user._id}}" class="waves-effect waves-light">Show Books</a></li>
+            <li><a href="/users/cart/{{user._id}}" class="waves-effect waves-light">Cart</a></li>
+            <li><a href="/users/viewPosts/{{user._id}}" class="waves-effect waves-light">View Posts</a></li>
+            {{ else }}
+            <li><a href="/users/showBooks/" class="waves-effect waves-dark">Show Books</a></li>
+            <li><a href="/users/cart/" class="waves-effect waves-dark">Cart</a></li>
+            <li><a href="/users/viewPosts/" class="waves-effect waves-dark">View Posts</a></li>
+            {{/ if}}
+            {{# if user }}
+            <!--{{user}}-->
+            <li><a href="#" class="dropdown-trigger waves-effect waves-dark" data-target="dropdown2">
+              Account<i class="material-icons right" style="padding:4px 0px">arrow_drop_down</i>
+            </a>
+            
+            {{ else }}
+            <li><a href="#" class="dropdown-trigger waves-effect waves-dark" data-target="dropdown1">
+              Account<i class="material-icons right" style="padding:4px 0px">arrow_drop_down</i>
+            </a>
+            {{/ if }}
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<ul class="sidenav" id="mobile-links">
+  {{# if user }}
+  <li><a href="/users/profile/{{ user._id }}" class="waves-effect waves-dark">{{user.firstName}}'s Profile</a></li>
+  <li><a href="/users/updateInfo/edit/{{ user._id }}" class="waves-effect waves-dark">Update Account</a></li>
+  
+  
+  {{ else }}
+  <li><a href="/users/role=>user/account" class="waves-effect waves-dark">Login</a></li>
+  <li><a href="/users/role=>user/account#register">Register</a></li>
+  {{/ if}}
+  {{# if user }}
+  <li><a href="/users/home/{{user._id}}" class="waves-effect waves-dark">Home</a></li>
+  {{ else }}
+  <li><a href="/users/home" class="waves-effect waves-dark">Home</a></li>
+  {{/ if}}
+  <li><a href="/users/showBooks/" class="waves-effect waves-dark">Show Books</a></li>
+  <li><a href="/users/cart/" class="waves-effect waves-dark">Cart</a></li>
+  <li><a href="/users/viewPosts/" class="waves-effect waves-dark">View Posts</a></li>
+  {{# if user }}<li><a href="/{{user.accountType}}/logout">Logout</a></li>{{/ if}}
+  
+</ul>
+
+<main>
+  <br>
+  <br>
+    <div class="container">
+      {{# if success_msg }}
+      <div class="ui success message">
+        <i class="close icon"></i>
+        <div class="header">
+          {{ success_msg }}
+        </div>
+      </div>
+    {{/ if}}
+    {{# if error_msg }}
+      <div class="ui negative message">
+      <i class="close icon"></i>
+      <div class="header">
+        {{ error_msg }}
+      </div>  
+      </div>
+    {{/ if}}
+    {{# if error }}
+      <div class="ui negative message">
+      <i class="close icon"></i>
+      <div class="header">
+        {{ error }}
+      </div>  
+      </div>
+    {{/ if}}
+    {{# if msg }}
+      <div class="ui negative message">
+      <i class="close icon"></i>
+      <div class="header">
+        {{ msg }}
+      </div>  
+      </div>
+    {{/ if}}
+{{req.user.userName}}
+    </div>
+{{{ body }}}
+</main>
+<br><br>
+
+<footer id="footer"  class="page-footer blue accent-4">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Glosys diGi-Lib</h5>
+                <p class="grey-text text-lighten-4">Glosys diGi-Lib is a digital Library Solution that empower users to check what are the books available in library instantaneously. </p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Navigate</h5>
+                <ul>
+                  {{# if user }}
+            <li><a href="/users/home/{{user._id}}" class="grey-text text-lighten-3">Home</a></li>
+            {{ else }}
+            <li><a href="/users/home" class="grey-text text-lighten-3">Home</a></li>
+            {{/ if}}
+            {{# if user }}
+            <li><a href="/users/showBooks/{{user._id}}" class="grey-text text-lighten-3">Show Books</a></li>
+            <li><a href="/users/cart/{{user._id}}" class="grey-text text-lighten-3">Cart</a></li>
+            <li><a href="/users/viewPosts/{{user._id}}" class="grey-text text-lighten-3">View Posts</a></li>
+            <li><a class="grey-text text-lighten-3" href="/{{user.accountType}}/profile/{{ user._id }}">Profile</a></li>
+            {{ else }}
+            <li><a href="/users/showBooks/" class="grey-text text-lighten-3">Show Books</a></li>
+            <li><a href="/users/cart/" class="grey-text text-lighten-3">Cart</a></li>
+            <li><a href="/users/viewPosts/" class="grey-text text-lighten-3">View Posts</a></li>
+            {{/ if}}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            <i class="material-icons" style="position:absolute">copyright</i>
+            <div class="container">
+               <strong>Glosys Technology Solutions Pvt Ltd.</strong>
+               </div>
+            </div>
+          </div>
+        </footer>
+<!-- Compiled and minified JavaScript -->
+<script src="/js/jquery-3.3.1.js"></script>
+<script src="/js/materialize.js"></script>
+<script>
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+    $('.tabs').tabs();
+    $(".dropdown-trigger").dropdown();
+  });
+</script>
+</body>
+</html>

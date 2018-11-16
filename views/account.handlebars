@@ -1,0 +1,271 @@
+
+
+<section class="section" id="services">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.js"></script>
+  
+  <div class="container">
+    
+      <!-- tabs -->
+      {{# if errors }}
+              <div class="ui error message">
+                <i class="close icon"></i>
+                <div class="header">
+                  Submission Has Validation errors
+                </div>
+              {{# each errors }}
+              <ul class="list">
+                <li>{{msg}}</li>
+              </ul>
+              {{/ each}}
+              </div>
+          {{/ if}}
+      
+   </div>
+   <div class="container">
+<div class="card z-depth-5">
+     <div class="card-tabs">
+      <ul class="tabs tabs-fixed-width  tabs-blue">
+        <li class="tab"><a href="#login">Login</a></li>
+        <li class="tab"><a href="#register">Register</a></li>
+        
+      </ul>
+    </div>
+   
+    <div class="card-content">
+      <div id="login">
+            <div class="container">
+                <div class="row">
+                {{# if role }}
+                <form method="post" action="/librarian/{{role}}/login">
+                    <div class="row hide">
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">label</i>
+                                <input id="ftype" name="formType" type="text" class="validate" value="Login">
+                                <label for="ftype">Form Type</label>
+                        </div>
+                    </div>
+            <div class="row">
+                <div class="input-field col s10">
+                    <i class="material-icons prefix">contact_mail</i>
+                    <input id="userName" name="username" maxlength="15" data-length="15" type="text" class="validate">
+                    <label for="userName">User Name</label>
+                </div>
+            </div>
+            <div class="row">
+                 <div class="input-field col s10">
+                    <i class="material-icons prefix">vpn_key</i>
+                        <input id="password" name="password" type="password" class="validate">
+                        <label for="password">Password</label>
+                    </div>
+                    </div>
+                <div class="container">
+                    <button type="submit" class="btn blue waves-effect waves-light z-depth-4">Login</button>
+                    <!--<button type="submit" class="btn blue waves-effect waves-light z-depth-4">Forgot Password</button>-->
+                </div>
+                </form>
+                {{ else }}
+                <form method="post" action="/users/role=>users/login">
+                    <div class="row hide">
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">label</i>
+                                <input id="ftype" name="formType" type="text" class="validate" value="Login">
+                                <label for="ftype">Form Type</label>
+                        </div>
+                    </div>
+            <div class="row">
+                <div class="input-field col s10">
+                    <i class="material-icons prefix">contact_mail</i>
+                    <input id="userName" name="username" maxlength="15" data-length="15" type="text" class="validate">
+                    <label for="userName">User Name</label>
+                </div>
+            </div>
+            <div class="row">
+                 <div class="input-field col s10">
+                    <i class="material-icons prefix">vpn_key</i>
+                        <input id="password" name="password" type="password" class="validate">
+                        <label for="password">Password</label>
+                    </div>
+                    </div>
+                <div class="container">
+                    <button type="submit" class="btn blue waves-effect waves-light z-depth-4">Login</button>
+                    <!--<button type="submit" class="btn blue waves-effect waves-light z-depth-4">Forgot Password</button>-->
+                </div>
+                </form>
+                {{/ if}}
+        
+       </div>
+            </div>
+      </div>
+      <div id="register">
+          <div class="row ">
+         
+                
+          <form  method="POST" action="account" class="col s12 l9 offset-l1">
+            <div class="row hide">
+              <div class="input-field col s6">
+                <i class="material-icons prefix">label</i>
+                <input id="ftype" name="formType" type="text" class="validate" value="Register">
+                <label for="ftype">Form Type</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <i class="material-icons prefix">person</i>
+                <input id="fname" maxlength="15" data-length="15" name="firstName" type="text" class="validate">
+                <label for="fname">First Name</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="lname" maxlength="15" data-length="15" name="lastName" type="text" class="validate">
+                <label for="lname">Last Name</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field">
+            <i class="material-icons prefix">date_range</i>
+            <input type="text" name="dateOfBirth" id="date" class="datepicker">
+            <label for="date">Date of Birth</label>
+          </div>
+            </div>
+
+            <div class="row">
+            <div class="input-field col s3">
+              <i class="material-icons prefix">home</i>
+              <input id="doorNo" name="doorNo" type="text" class="validate">
+              <label for="doorNo">Door No.</label>
+            </div>
+            <div class="input-field col s9">
+              <input id="streetNo" name="streetName" type="text" class="validate">
+              <label for="streetNo">Street Name</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="material-icons prefix">map</i>
+              <input id="areaLocal" name="areaName" type="text" class="validate">
+              <label for="areaLocal">Area/Locality</label>
+            </div>
+            
+            <div class="input-field col s6">
+              <input id="zipCode" name="zipCode" maxlength="6" data-length="6" type="text" class="validate">
+              <label for="zipCode">Zip Code</label>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="material-icons prefix">place</i>
+              <input id="state" name="stateName" type="text" class="validate">
+              <label for="state">State</label>
+            </div>
+            
+            <div class="input-field col s6">
+              <input id="country" name="countryName" type="text" class="validate">
+              <label for="country">Country</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="material-icons prefix">contact_mail</i>
+              <input id="userName" name="userName" maxlength="15" data-length="15" type="text" class="validate">
+              <label for="userName">User Name</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="mobileNumber" maxlength="13" data-length="13" name="mobileNumber" type="text" class="validate">
+              <label for="mobileNumber">Mobile</label>
+            </div>
+          </div>
+          <div class="container">
+            <div class="input-field col s12">
+              <!--<i class="material-icons prefix">assessment</i>-->
+              
+            </div>
+          </div>
+          
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">email</i>
+                <input id="email" name="email" type="email" class="validate">
+                <label for="email">Email</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">vpn_key</i>
+                <input id="password" name="passName" type="password" class="validate">
+                <label for="password">Password</label>
+              </div>
+            </div>
+            <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">security</i>
+              <input id="confPass" name="confPassName" type="password" class="validate">
+              <label for="confPass">Confirm Password</label>
+            </div>
+          </div>
+    
+          <div class="row">
+            <strong><h5><i class="material-icons">assessment</i> Membership Plans</h5></strong>
+              <div class="input-field col s4">
+                <label>
+                  
+                  <input class="with-gap" name="membershipName" type="radio" value="g-Prime" />
+                      <span>g-Prime</span>
+                </label>
+              </div>
+              <div class="input-field col s4">
+                <label>
+                  <input class="with-gap" name="membershipName" type="radio" value="g-Standard" />
+                      <span>g-Standard</span>
+                </label>
+              </div>
+              <div class="input-field col s4">
+                <label>
+                  <input class="with-gap" name="membershipName" type="radio" value="g-Classic" />
+                      <span>g-Classic</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="container"><br><br>
+              
+              <button type="submit" href="account" class="btn blue waves-effect waves-light z-depth-4">Sign Up</button>
+            </div>
+            
+            
+           
+         </form>
+       </div>
+      </div>
+
+      <div class="card-content">
+          <div class="container">
+             <i class="material-icons" style="position:absolute">copyright</i><div class="container">
+               <strong>Glosys Technology Solutions Pvt. Ltd.</strong>
+             </div>
+           </div>
+      </div>
+      
+    </div>
+  </div>
+  </div>
+
+
+ <script src="/js/jquery-3.3.1.js"></script>
+ <script src="/js/materialize.min.js"></script>
+ <script>
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+    $('.materialboxed').materialbox();
+    $('.parallax').parallax();
+    $('.tabs').tabs();
+    $('.datepicker').datepicker({
+    });
+    $('input#fname,input#lname,input#zipCode,input#userName,input#mobileNumber').characterCounter();
+  });
+</script>
+</section>

@@ -1,0 +1,63 @@
+<div class="container">
+  <br><br>
+  <strong><h3 style="font-family:Georgia;">{{user.firstName}}'s Cart {{# unless cart}} is Empty {{/ unless}}
+  {{# if cart}}
+  <form method="POST" action="/users/cart/{{user._id}}">
+    <center>
+      <button class="z-depth-3 waves-effect waves-dark red accent-3 btn" type="submit" autocomplete="off" name="submit" value="Remove All">Remove All From Cart<i class="material-icons left">play_for_work</i><input class="hide" type="submit" autocomplete="off" name="submit" value="Remove All"></button>
+        &nbsp;
+      <button class="z-depth-3 waves-effect waves-dark btn light-green accent-4" type="submit" autocomplete="off" name="submit" value="Borrow All">Borrow All<i class="material-icons left">play_for_work</i><input class="hide" type="submit" autocomplete="off" name="submit" value="Borrow All"></button>
+    </center>
+  </form>
+  {{/ if}}
+  </h3></strong>
+</div>
+
+
+
+{{# each cart}}
+<div class="container">
+  
+<div class="row">
+
+
+           
+            <div class="card  horizontal medium sticky-action z-depth-5" style="overflow: visible;">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="{{ this.imageToHBS }}">
+              </div>
+              <div class="card-content large">
+                <span class="card-title activator grey-text text-darken-4">{{ this.bookName }}<i class="material-icons right">more_vert</i></span>
+                <b><span>Author :  {{ this.authorName }} &nbsp; </span>
+                <br>  <br></b>                
+                
+              </div>
+              
+              <div class="card-action">
+                <form method="POST" action="/users/showBooks/{{this.bookId}}">
+                  <center>
+                    <button class="z-depth-3 waves-effect waves-dark red accent-3 btn" type="submit" autocomplete="off" name="submit" value="RemoveFromCart">Remove From Cart<i class="material-icons left">play_for_work</i><input class="hide" type="submit" autocomplete="off" name="submit" value="RemoveFromCart"></button>
+                  &nbsp;
+                  <button class="z-depth-3 waves-effect waves-dark btn light-green accent-4" type="submit" autocomplete="off" name="submit" value="Borrow">Borrow<i class="material-icons left">play_for_work</i><input class="hide" type="submit" autocomplete="off" name="submit" value="Borrow"></button>
+                  </center>
+                </form>
+              </div>
+
+              <div class="card-reveal" style="display: none; transform: translateY(0%);">
+                <span class="card-title grey-text text-darken-4"> <b>{{ this.bookName }}</b><i class="material-icons right">close</i></span>
+                <h6>by {{this.authorName}}</h6>
+                
+                <!--<p>{{this._id}}</p>-->
+                <h6><b>Department: </b> {{ this.bookDept}}</h6>
+                <br>
+                <p style="text-align:left;">{{ this.bookDes }}</p>
+                
+                <br><br><br><br><br><br>
+              </div>
+            </div>
+          </div>
+
+          
+</div>
+
+{{/ each}}
